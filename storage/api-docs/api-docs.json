@@ -1,0 +1,68 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "URL Hashing API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/invite": {
+            "post": {
+                "summary": "Send Invite",
+                "description": "This api will send hash link in the form of short URL via e-mail and it can be used only once",
+                "operationId": "Send Invitation",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "https://www.ajio.com/?utm_source=promo&utm_medium=wa&utm_campaign=WA_d-09122022_VF_B2_BBS"
+                                    },
+                                    "email": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "priyankatailor2389@gmail.com"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Invitation is sent to your email, please check your inbox",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "string",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invitation is sent to your email, please check your inbox"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
